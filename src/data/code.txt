@@ -1,0 +1,92 @@
+<Box
+      sx={{
+        display: 'flex',
+        flexDirection:'column',
+        height:'20rem',
+        width:'auto',
+        gap:'15px'
+      
+      }}
+    >
+      
+        <Box display='flex' gap={3}>
+        <label htmlFor="12.5kg" class='text-[#D5C7A3]'>12.5kg Cylinder</label>
+        <input type="text" name="" id="" class='outline rounded' onChange={calcPrice}/>
+        
+        </Box><p>Unit Price is: {unitPrice}</p>
+        {/* table */}
+     <Box display='flex' gap={5}>
+  {/* first table */}
+     <TableContainer component={Paper}>
+  <Table sx={{ minWidth: 600 }} aria-label="simple table">
+    <TableHead>
+      <TableRow>
+        <TableCell>Weight</TableCell>
+        <TableCell align="right">Price</TableCell>
+      </TableRow>
+    </TableHead>
+    {/* Body */}
+    <TableBody>
+      {
+        // Create the weights array from 3kg to 21kg
+        [...Array(13)].map((_, index) => {
+          const weight = 3 + index; // Create weights from 3 to 21
+          const price = ((unitPrice/12.5) * weight).toFixed(2); // Example price logic: 5 per kg
+
+          return (
+            <TableRow key={weight}>
+              <TableCell component="th" scope="row">
+                {weight}kg
+              </TableCell>
+              <TableCell align="right">{price}</TableCell>
+            </TableRow>
+          );
+        })
+      }
+    
+    </TableBody>
+  </Table>
+</TableContainer>
+   {/* second table */}
+   <TableContainer component={Paper}>
+  <Table sx={{ minWidth: 600 }} aria-label="simple table">
+    <TableHead>
+      <TableRow>
+        <TableCell>Weight</TableCell>
+        <TableCell align="right">Price</TableCell>
+      </TableRow>
+    </TableHead>
+    {/* Body */}
+    <TableBody>
+      {
+        // Create the weights array from 3kg to 21kg
+        [...Array(10)].map((_, index) => {
+          const weight = 16 + index; // Create weights from 3 to 21
+          const price = ((unitPrice/12.5) * weight).toFixed(2); // Example price logic: 5 per kg
+
+          return (
+            <TableRow key={weight}>
+              <TableCell component="th" scope="row">
+                {weight}kg
+              </TableCell>
+              <TableCell align="right">{price}</TableCell>
+            </TableRow>
+          );
+        })
+      }
+     {secondWgts.map((weights)=>{
+        const price2 = ((unitPrice/12.5) * weights).toFixed(2);
+      return <TableRow >
+              <TableCell component="th" scope="row">
+              {weights}kg
+              </TableCell>
+              <TableCell align="right">{price2}</TableCell>
+            </TableRow>
+     })} 
+    </TableBody>
+  </Table>
+</TableContainer>
+</Box>
+     
+      
+    </Box>

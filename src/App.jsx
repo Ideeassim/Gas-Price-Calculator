@@ -1,6 +1,6 @@
 
 import { useState, React } from 'react';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,27 +8,36 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+
 function App() {
-//  const [currentPage, setCurrentPage] = useState(1);
 
- //generate data
- const gasData=Array.from({length:15}, (_, item) =>{
-   const weight =( item +3) ;
-  const price = weight * 1000;
- 
-   return {weight, price};
- })
-const t =[25, 50, 60]
+  const gD= Array.from({length:15}, (_, item)=>{
+ return  item + 1;
+})
+
+
+const t =[...gD,25, 50, 60]
+console.log(t);
+
  const gasData2= Array.from(t, i =>{
-  const wght = i +0;
-  const p2= i * 1000;
+  const weight = i +0;
+  const price= i * 1000;
 
-  return {wght,p2};
+  return {weight,price};
  })
 
 //pagination
 //set current page state:
-const [currentPage, setCurrentPage]= useState(1)
+const [currentPage, setCurrentPage]= useState(1);
+const itemsPerPage=7;
+
+//get items for current page
+const startIndex= (currentPage -1)*7;
+const displayedData= gasData2.slice(startIndex, startIndex+itemsPerPage);
+
+//calculate total pages
+const totalPages= Math.ceil(gasData2.length/itemsPerPage);
+console.log(totalPages);
 
  
 
@@ -47,9 +56,9 @@ const [currentPage, setCurrentPage]= useState(1)
           </TableRow>
         </TableHead>
         <TableBody>
-          {gasData.map((row) => (
+          {displayedData.map((row) => (
             <TableRow
-              key={row.weight}
+              key={row}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
@@ -57,26 +66,16 @@ const [currentPage, setCurrentPage]= useState(1)
               </TableCell>
               <TableCell align="right">{row.price}</TableCell>
             </TableRow> ))}
-             {gasData2.map((row, index) => (
-              <TableRow
-                key={index}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.wght}
-                </TableCell>
-               
-                  
-                   
-                 
-                <TableCell align="right">{row.p2}</TableCell>
-              </TableRow>
-              
-          ))}
+           
            
         </TableBody>
       </Table>
     </TableContainer>
+
+    <Box>
+      <Button onClick={()=>setCurrentPage(currentPage-1)} disabled={currentPage===1}>Previous</Button>
+      <Button onClick={()=>setCurrentPage(currentPage+1)} disabled={currentPage===totalPages}>Next</Button>
+    </Box>
 </Box>)
 }
 

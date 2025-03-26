@@ -28,10 +28,10 @@ function handleSubmit() {
    
 
   return (
-    <Paper sx={{ width:{ xs: '140%', sm: '80%', md: '70%', lg: '60%' },border:'solid blue',position:'relative', height:{lg:'15rem'},  padding:'20px', paddingY:'50px', opacity:'0.9', fontFamily: 'Raleway, serif'}}  elevation={8} >
+    <Paper sx={{ width:{ xs: '120%', sm: '80%', md: '70%', lg: '60%' },position:'relative', height:{lg:'15rem'},  padding:'20px', paddingY:'50px', opacity:'0.9', fontFamily: 'Raleway, serif'}}  elevation={8} >
       <Box sx={{position:'absolute', top:'-50%',left:'-10%', width:'120%', textAlign:'center'}}><Typography color={white} sx={{fontSize:{xs:'3rem', sm:'3rem', md:'3.5rem', lg:'4rem'}}} variant='h2' fontWeight='400' fontFamily='Monomakh, system-ui'><span style={{color:'#EB5B00'}}>GAS PRICE </span>CALCULATOR</Typography></Box>
         <Box sx={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
-        <label htmlFor="priceSet"><Typography sx={{ fontFamily: 'Playfair Display, serif',fontSize: { xs: '1.0rem', sm: '1.5rem', md: '1.5rem', lg: '2.0rem' },  }} variant={{sm:'h1',lg:'h5'}} color={grayColor}>What is the price for 12.5kg?</Typography ></label>
+        <label htmlFor="priceSet"><Typography sx={{ fontFamily: 'Playfair Display, serif',fontSize: { xs: '1rem', sm: '1.5rem', md: '1.5rem', lg: '2.0rem' },  }} variant={{sm:'h1',lg:'h5'}} color={grayColor}>What is the price for 12.5kg?</Typography ></label>
          <Stack display='flex' direction={{sm:'column', lg:'row'}} alignItems='center' marginTop={2}>
          <FormControl  sx={{ m: 1 }} >
           <InputLabel htmlFor="outlined-adornment-amount" color={orange}>Amount</InputLabel>
